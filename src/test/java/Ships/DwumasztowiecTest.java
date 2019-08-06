@@ -1,3 +1,5 @@
+package Ships;
+
 import Ships.Dwumasztowiec;
 import org.junit.Test;
 

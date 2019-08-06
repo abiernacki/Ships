@@ -1,3 +1,5 @@
+package Ships;
+
 import Ships.Statki;
 import org.junit.Test;
 

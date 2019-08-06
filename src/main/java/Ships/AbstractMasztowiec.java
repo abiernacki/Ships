@@ -3,12 +3,7 @@ package Ships;
 public abstract class AbstractMasztowiec {
 
     private final static int ROZMIAR = 10;
-
-    /**
-     * Metoda ma na celu sprawdzenie czy punkt miesci się na maceitrzy
-     * @param y2
-     * @return
-     */
+    
     protected boolean check(int y2) {
         if (y2 < 1 || y2 > ROZMIAR) {
             return true;
