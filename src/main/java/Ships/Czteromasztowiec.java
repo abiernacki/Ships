@@ -23,6 +23,35 @@ public class Czteromasztowiec {
         this.x4 = x4;
     }
 
+    public boolean validate() {
+        if (x1 < 1 || x1 > 10) {
+            return false;
+        }
+        if (y1 < 1 || y1 > 10) {
+            return false;
+        }
+        if (x2 < 1 || x2 > 10) {
+            return false;
+        }
+        if (y2 < 1 || y2 > 10) {
+            return false;
+        }
+        if (x3 < 1 || x3 > 10) {
+            return false;
+        }
+        if (y3 < 1 || y3 > 10) {
+            return false;
+        }
+        if (x4 < 1 || x4 > 10) {
+            return false;
+        }
+        if (y4 < 1 || y4 > 10) {
+            return false;
+        }
+
+        return true;
+    }
+
     public int getX1() {
         return x1;
     }

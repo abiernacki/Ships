@@ -1,6 +1,6 @@
 package Ships;
 
-public class Dwumasztowiec {
+public class Dwumasztowiec extends AbstractMasztowiec {
 
     private int x1;
     private int x2;
@@ -15,36 +15,31 @@ public class Dwumasztowiec {
     }
 
     public boolean validate() {
-        if (x1 < 1 || x1 > 10) {
-            return false;
-        }
-        if (y1 < 1 || y1 > 10) {
-            return false;
-        }
-        if (x2 < 1 || x2 > 10) {
-            return false;
-        }
-        if (y2 < 1 || y2 > 10) {
-            return false;
-        }
+        if (check(x1)) return false;
+        if (check(y1)) return false;
+        if (check(x2)) return false;
+        if (check(y2)) return false;
+
         if (x1 != x2 && y1 != y2) {
             return false;
         }
         if (x1 == x2 && y1 == y2) {
             return false;
         }
-        if (x1 == x2 && y1 != y2) {
-            if (!(y1 == y2 + 1 && y2 < 10) && !(y1 == y2 - 1 && y2 > 1)) {
-                return false;
-            }
-        }
-        if (y1 == y2 && x1 != x2) {
-            if (!(x1 == x2 + 1 && x2 < 10) && !(x1 == x2 - 1 && x2 > 1)) {
-                return false;
-            }
-        }
+
+        if (test(x1, x2, y1, y2)) return false;
+        if (test(y1, y2, x1, x2)) return false;
 
         return true;
+    }
+
+    private boolean test(int x1, int x2, int y1, int y2) {
+        if (x1 == x2 && y1 != y2) {
+            if (varAnd(y1, y2)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public int getX1() {

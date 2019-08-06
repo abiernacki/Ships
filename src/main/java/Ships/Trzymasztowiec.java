@@ -1,6 +1,6 @@
 package Ships;
 
-public class Trzymasztowiec {
+public class Trzymasztowiec extends AbstractMasztowiec {
 
     private int x1;
     private int x2;
@@ -18,6 +18,40 @@ public class Trzymasztowiec {
         this.y3 = y3;
         this.x3 = x3;
     }
+
+    public boolean validate() {
+        if (check(x1)) return false;
+        if (check(y1)) return false;
+        if (check(x2)) return false;
+        if (check(y2)) return false;
+        if (check(x3)) return false;
+        if (check(y3)) return false;
+
+
+        if (x1 != x2 && x1 != x3 && x2 != x3 && y1 != y2 && y1 != y3 && y2 != y3) {
+            return false;
+        }
+        if (x1 == x2 && x1 == x3 && y1 == y2 && y1 == y3) {
+            return false;
+        }
+        if ((x1 != x2 || x1 != x3 || x2 != x3) && (y1 != y2 || y1 != y3 || y2 != y3)) {
+            return false;
+        }
+
+        if (test(x1, x2, x3, y1, y2, y3)) return false;
+        if (test(y1, y2, y3, x1, x2, x3)) return false;
+        return true;
+    }
+
+    private boolean test(int a, int b, int c, int d, int e, int f) {
+        if (a == b && a == c && d != e && d != f && e != f) {
+            if (varAnd(d, e) && varAnd(d, f) && varAnd(e, f)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
 
     public int getX1() {
         return x1;
