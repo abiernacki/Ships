@@ -28,19 +28,31 @@ public class Trzymasztowiec extends AbstractMasztowiec {
         if (check(y3)) return false;
 
 
-        if (x1 != x2 && x1 != x3 && x2 != x3 && y1 != y2 && y1 != y3 && y2 != y3) {
+        if (checkIn(x1, x2, x3) && checkIn(y1, y2, y3)) {
             return false;
         }
-        if (x1 == x2 && x1 == x3 && y1 == y2 && y1 == y3) {
+        if (checkIn2(x1, x2, x3) && checkIn2(y1, y2, y3)) {
             return false;
         }
-        if ((x1 != x2 || x1 != x3 || x2 != x3) && (y1 != y2 || y1 != y3 || y2 != y3)) {
+        if (checkIn3(x1, x2, x3) && (checkIn3(y1, y2, y3))) {
             return false;
         }
 
         if (test(x1, x2, x3, y1, y2, y3)) return false;
         if (test(y1, y2, y3, x1, x2, x3)) return false;
         return true;
+    }
+
+    private boolean checkIn3(int a, int b, int c) {
+        return a != b || a != c;
+    }
+
+    public boolean checkIn2(int a, int b, int c) {
+        return a == b && a == c;
+    }
+
+    public boolean checkIn(int a, int b, int c) {
+        return a != b && a != c && b != c;
     }
 
     private boolean test(int a, int b, int c, int d, int e, int f) {

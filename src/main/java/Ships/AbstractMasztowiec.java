@@ -2,10 +2,8 @@ package Ships;
 
 public abstract class AbstractMasztowiec {
 
-    private final static int ROZMIAR = 10;
-    
     protected boolean check(int y2) {
-        if (y2 < 1 || y2 > ROZMIAR) {
+        if (y2 < 1 || y2 > 10) {
             return true;
         }
         return false;
@@ -20,6 +18,6 @@ public abstract class AbstractMasztowiec {
     }
 
     protected boolean var1(int a, int b) {
-        return !(a == b + 1 && b < ROZMIAR);
+        return !(a == b + 1 && b < 10);
     }
 }
