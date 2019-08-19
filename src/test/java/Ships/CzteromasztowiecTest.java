@@ -75,4 +75,32 @@ public class CzteromasztowiecTest {
 
         assertFalse(result);
     }
+
+    @Test
+    public void TestNiePoprawny4(){
+
+        //given
+        Czteromasztowiec czteromasztowiec = new Czteromasztowiec(1,1,1,2,1,4,1,5);
+
+        //when
+        boolean result = czteromasztowiec.validate();
+
+        //then
+
+        assertFalse(result);
+    }
+    @Test
+    public void TestNiePoprawny5(){
+
+        //given
+        Czteromasztowiec czteromasztowiec = new Czteromasztowiec(1,1,2,1,1,4,1,6);
+
+        //when
+        boolean result = czteromasztowiec.validate();
+
+        //then
+
+        assertFalse(result);
+    }
+
 }

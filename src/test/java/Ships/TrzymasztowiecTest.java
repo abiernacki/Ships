@@ -76,4 +76,32 @@ public class TrzymasztowiecTest {
         assertFalse(result);
     }
 
+    @Test
+    public void TestNiePoprawny4(){
+
+        //given
+        Trzymasztowiec trzymasztowiec = new Trzymasztowiec(1,1,1,2,1,4);
+
+        //when
+        boolean result = trzymasztowiec.validate();
+
+        //then
+
+        assertFalse(result);
+    }
+
+    @Test
+    public void TestNiePoprawny5(){
+
+        //given
+        Trzymasztowiec trzymasztowiec = new Trzymasztowiec(1,1,3,1,4,1);
+
+        //when
+        boolean result = trzymasztowiec.validate();
+
+        //then
+
+        assertFalse(result);
+    }
+
 }

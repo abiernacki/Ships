@@ -11,7 +11,6 @@ public class Czteromasztowiec extends AbstractMasztowiec {
     private int y4;
     private int x4;
 
-
     public Czteromasztowiec(int x1, int y1, int x2, int y2, int x3, int y3, int x4, int y4) {
         this.x1 = x1;
         this.x2 = x2;
@@ -45,7 +44,18 @@ public class Czteromasztowiec extends AbstractMasztowiec {
         if (test(x1, x2, x3, x4, y1, y2, y3, y4)) return false;
         if (test(y1, y2, y3, y4, x1, x2, x3, x4)) return false;
 
+        if (checkIn2(x1, x2, x3, x4) && checkIn4(y1, y2, y3, y4) && checkIn4(y4, y3, y2, y1)) {
+            return false;
+        }
+        if (checkIn2(y1, y2, y3, y4) && checkIn4(x1, x2, x3, x4) && checkIn4(x4, x3, x2, x1)) {
+            return false;
+        }
+
         return true;
+    }
+
+    private boolean checkIn4(int a, int b, int c, int d) {
+        return !(b - a == 1 && c - b == 1 && d - c == 1);
     }
 
     private boolean checkIn3(int a, int b, int c, int d) {

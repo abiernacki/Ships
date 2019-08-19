@@ -1,6 +1,6 @@
 package Ships;
 
-public class Jednomasztowiec {
+public class Jednomasztowiec extends AbstractMasztowiec{
 
     private int x;
     private int y;
@@ -8,6 +8,12 @@ public class Jednomasztowiec {
     public Jednomasztowiec(int x, int y){
         this.x = x;
         this.y = y;
+    }
+
+    public boolean validate(){
+        if (check(x)) return false;
+        if (check(y)) return false;
+        return true;
     }
 
     public int getY() {
