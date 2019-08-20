@@ -2,8 +2,8 @@ package Ships;
 
 public abstract class AbstractMasztowiec {
 
-    protected boolean check(int y2) {
-        if (y2 < 1 || y2 > 10) {
+    protected boolean check(int a) {
+        if (a < 1 || a > 10) {
             return true;
         }
         return false;
