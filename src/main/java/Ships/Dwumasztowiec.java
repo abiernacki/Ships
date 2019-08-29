@@ -1,5 +1,7 @@
 package Ships;
 
+import java.util.List;
+
 public class Dwumasztowiec extends AbstractMasztowiec {
 
     private int x1;
@@ -12,6 +14,14 @@ public class Dwumasztowiec extends AbstractMasztowiec {
         this.x2 = x2;
         this.y1 = y1;
         this.y2 = y2;
+    }
+
+    public boolean validate(List<Punkt> list) {
+        validate();
+
+        if (checkPoints(list, x1, y1)) return false;
+        if (checkPoints(list, x2, y2)) return false;
+        return true;
     }
 
     public boolean validate() {

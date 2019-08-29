@@ -1,5 +1,8 @@
 package Ships;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Statki {
 
     private Jednomasztowiec[] statki1 = new Jednomasztowiec[4];
@@ -10,13 +13,48 @@ public class Statki {
     private int[] numbers = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
     private char[] chars = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'};
 
-//    public Statki() {
-//        Jednomasztowiec jednomasztowiec = new Jednomasztowiec(1, 1);
-//        if (jednomasztowiec.validate()) {
-//            statki1[0] = jednomasztowiec;
-//        } else {
-//            System.out.println("blad");
-//        }
+    public List<Punkt> zajetePola() {
+
+        List<Punkt> listaStatkow = new ArrayList<>();
+
+        for (Jednomasztowiec var : statki1) {
+            if (var != null) {
+                listaStatkow.add(new Punkt(var.getX(), var.getY()));
+            }
+        }
+
+        for (Dwumasztowiec var : statki2) {
+            if (var != null) {
+                listaStatkow.add(new Punkt(var.getX1(), var.getY1()));
+                listaStatkow.add(new Punkt(var.getX2(), var.getY2()));
+            }
+        }
+
+        for (Trzymasztowiec var : statki3) {
+            if (var != null) {
+                listaStatkow.add(new Punkt(var.getX1(), var.getY1()));
+                listaStatkow.add(new Punkt(var.getX2(), var.getY2()));
+                listaStatkow.add(new Punkt(var.getX3(), var.getY3()));
+            }
+        }
+
+        for (Czteromasztowiec var : statki4) {
+            if (var != null) {
+                listaStatkow.add(new Punkt(var.getX1(), var.getY1()));
+                listaStatkow.add(new Punkt(var.getX2(), var.getY2()));
+                listaStatkow.add(new Punkt(var.getX3(), var.getY3()));
+                listaStatkow.add(new Punkt(var.getX4(), var.getY4()));
+            }
+        }
+
+        return listaStatkow;
+    }
+
+    public Statki() {
+
+
+//        statki1[0] = new Jednomasztowiec(1, 1);
+//
 //        statki1[1] = new Jednomasztowiec(8, 5);
 //        statki1[2] = new Jednomasztowiec(1, 10);
 //        statki1[3] = new Jednomasztowiec(2, 6);
@@ -29,7 +67,7 @@ public class Statki {
 //        statki3[1] = new Trzymasztowiec(4, 8, 5, 8, 6, 8);
 //
 //        statki4[0] = new Czteromasztowiec(2, 4, 3, 4, 4, 4, 5, 4);
-//    }
+    }
 
     public void setStatki1(Jednomasztowiec[] statki1) {
         this.statki1 = statki1;
@@ -54,7 +92,7 @@ public class Statki {
                     System.out.print(String.format("%4s", String.format("%-4s", " ")));
                 }
                 if (i == 0 && j != 0) {
-                    System.out.print(String.format("%4s", String.format("%-4s", " " +chars[j - 1] + " " )));
+                    System.out.print(String.format("%4s", String.format("%-4s", " " + chars[j - 1] + " ")));
                 }
                 if (i != 0 && j == 0) {
                     System.out.print(String.format("%4s", String.format("%-4s", numbers[i - 1])));

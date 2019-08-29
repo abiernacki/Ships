@@ -3,6 +3,9 @@ package Ships;
 import Ships.Dwumasztowiec;
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.Assert.*;
 
 public class DwumasztowiecTest {
@@ -62,6 +65,35 @@ public class DwumasztowiecTest {
         //then
 
         assertFalse(result);
+    }
+
+    @Test
+    public  void testValidate2(){
+
+        // given
+        Dwumasztowiec dwumasztowiec = new Dwumasztowiec(5,8,6,8);
+        List<Punkt> list = new ArrayList<>();
+
+        // when
+        boolean valid = dwumasztowiec.validate(list);
+
+        // then
+        assertTrue(valid);
+    }
+
+    @Test
+    public  void testValidate2Error(){
+
+        // given
+        Dwumasztowiec dwumasztowiec = new Dwumasztowiec(5,8,6,8);
+        List<Punkt> list = new ArrayList<>();
+        list.add(new Punkt(7,7));
+
+        // when
+        boolean valid = dwumasztowiec.validate(list);
+
+        // then
+        assertFalse(valid);
     }
 
 }

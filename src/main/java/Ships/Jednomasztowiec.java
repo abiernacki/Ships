@@ -1,5 +1,7 @@
 package Ships;
 
+import java.util.List;
+
 public class Jednomasztowiec extends AbstractMasztowiec{
 
     private int x;
@@ -15,6 +17,15 @@ public class Jednomasztowiec extends AbstractMasztowiec{
         if (check(y)) return false;
         return true;
     }
+
+    public boolean validate(List<Punkt> list){
+        validate();
+
+        if (checkPoints(list, x, y)) return false;
+        return true;
+    }
+
+
 
     public int getY() {
         return y;
