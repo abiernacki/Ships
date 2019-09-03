@@ -4,7 +4,7 @@ import java.util.List;
 
 public abstract class AbstractMasztowiec {
 
-    protected boolean check(int a) {
+    protected static boolean check(int a) {
         if (a < 1 || a > 10) {
             return true;
         }

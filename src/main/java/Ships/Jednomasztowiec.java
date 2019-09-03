@@ -1,5 +1,7 @@
 package Ships;
 
+import jdk.nashorn.internal.ir.IfNode;
+
 import java.util.List;
 
 public class Jednomasztowiec extends AbstractMasztowiec{
@@ -19,7 +21,9 @@ public class Jednomasztowiec extends AbstractMasztowiec{
     }
 
     public boolean validate(List<Punkt> list){
-        validate();
+         if (!validate()){
+             return false;
+         }
 
         if (checkPoints(list, x, y)) return false;
         return true;

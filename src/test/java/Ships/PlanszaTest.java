@@ -1,22 +1,19 @@
 package Ships;
 
-import Ships.Statki;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
-
-public class StatkiTest {
+public class PlanszaTest {
 
     @Test
     public void testPlansza() {
 
         //given
-        Statki statki = new Statki();
+        Plansza plansza = new Plansza();
 
         //when
-        statki.plansza();
+        plansza.plansza();
 
-        for (Punkt var : statki.zajetePola()) {
+        for (Punkt var : plansza.zajetePola()) {
             System.out.print(var.getX());
             System.out.print(",");
             System.out.print(var.getY());

@@ -3,12 +3,13 @@ package Ships;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Statki {
+public class Plansza {
 
     private Jednomasztowiec[] statki1 = new Jednomasztowiec[4];
     private Dwumasztowiec[] statki2 = new Dwumasztowiec[3];
     private Trzymasztowiec[] statki3 = new Trzymasztowiec[2];
     private Czteromasztowiec[] statki4 = new Czteromasztowiec[1];
+    private List<Punkt> strzaly = new ArrayList<>();
 
     private int[] numbers = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
     private char[] chars = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'};
@@ -50,23 +51,38 @@ public class Statki {
         return listaStatkow;
     }
 
-    public Statki() {
+    public Plansza(int tmp) {
+        statki1[0] = new Jednomasztowiec(2, 2);
 
+        statki1[1] = new Jednomasztowiec(8, 6);
+        statki1[2] = new Jednomasztowiec(2, 9);
+        statki1[3] = new Jednomasztowiec(4, 6);
 
-//        statki1[0] = new Jednomasztowiec(1, 1);
-//
-//        statki1[1] = new Jednomasztowiec(8, 5);
-//        statki1[2] = new Jednomasztowiec(1, 10);
-//        statki1[3] = new Jednomasztowiec(2, 6);
-//
-//        statki2[0] = new Dwumasztowiec(7, 10, 8, 10);
-//        statki2[1] = new Dwumasztowiec(5, 1, 6, 1);
-//        statki2[2] = new Dwumasztowiec(10, 9, 10, 10);
-//
-//        statki3[0] = new Trzymasztowiec(10, 1, 10, 2, 10, 3);
-//        statki3[1] = new Trzymasztowiec(4, 8, 5, 8, 6, 8);
-//
-//        statki4[0] = new Czteromasztowiec(2, 4, 3, 4, 4, 4, 5, 4);
+        statki2[0] = new Dwumasztowiec(5, 10, 6, 10);
+        statki2[1] = new Dwumasztowiec(5, 2, 6, 2);
+        statki2[2] = new Dwumasztowiec(10, 7, 10, 8);
+
+        statki3[0] = new Trzymasztowiec(9, 1, 9, 2, 9, 3);
+        statki3[1] = new Trzymasztowiec(6, 8, 7, 8, 8, 8);
+
+        statki4[0] = new Czteromasztowiec(4, 4, 5, 4, 6, 4, 7, 4);
+    }
+
+    public Plansza() {
+        statki1[0] = new Jednomasztowiec(1, 1);
+
+        statki1[1] = new Jednomasztowiec(8, 5);
+        statki1[2] = new Jednomasztowiec(1, 10);
+        statki1[3] = new Jednomasztowiec(2, 6);
+
+        statki2[0] = new Dwumasztowiec(7, 10, 8, 10);
+        statki2[1] = new Dwumasztowiec(5, 1, 6, 1);
+        statki2[2] = new Dwumasztowiec(10, 9, 10, 10);
+
+        statki3[0] = new Trzymasztowiec(10, 1, 10, 2, 10, 3);
+        statki3[1] = new Trzymasztowiec(4, 8, 5, 8, 6, 8);
+
+        statki4[0] = new Czteromasztowiec(2, 4, 3, 4, 4, 4, 5, 4);
     }
 
     public void setStatki1(Jednomasztowiec[] statki1) {
@@ -85,7 +101,15 @@ public class Statki {
         this.statki4 = statki4;
     }
 
+    public List<Punkt> getStrzaly() {
+        return strzaly;
+    }
+
     public void plansza() {
+        plansza(false);
+    }
+
+    public void plansza(boolean ukryj) {
         for (int i = 0; i <= numbers.length; i++) {
             for (int j = 0; j <= chars.length; j++) {
                 if (i == 0 && j == 0) {
@@ -138,16 +162,51 @@ public class Statki {
                         }
                     }
 
+                    boolean czyStrzal = false;
+                    for (Punkt var: strzaly) {
+                        if (var.getX() == i && var.getY() == j){
+                            czyStrzal = true;
+                        }
+                    }
+
                     if (czyZnaleziono1) {
-                        System.out.print(String.format("%4s", String.format("%-4s", "|1|")));
+                        if (czyStrzal){
+                            System.out.print(String.format("%4s", String.format("%-4s", "|Z|")));
+                        } else if(!ukryj) {
+                            System.out.print(String.format("%4s", String.format("%-4s", "|1|")));
+                        } else {
+                            System.out.print(String.format("%4s", String.format("%-4s", " _ ")));
+                        }
                     } else if (czyZnaleziono2) {
-                        System.out.print(String.format("%4s", String.format("%-4s", "|2|")));
+                        if (czyStrzal){
+                            System.out.print(String.format("%4s", String.format("%-4s", "|Z|")));
+                        } else if(!ukryj) {
+                            System.out.print(String.format("%4s", String.format("%-4s", "|2|")));
+                        } else {
+                            System.out.print(String.format("%4s", String.format("%-4s", " _ ")));
+                        }
                     } else if (czyZnaleziono3) {
-                        System.out.print(String.format("%4s", String.format("%-4s", "|3|")));
+                        if (czyStrzal){
+                            System.out.print(String.format("%4s", String.format("%-4s", "|Z|")));
+                        } else if(!ukryj) {
+                            System.out.print(String.format("%4s", String.format("%-4s", "|3|")));
+                        } else {
+                            System.out.print(String.format("%4s", String.format("%-4s", " _ ")));
+                        }
                     } else if (czyZnaleziono4) {
-                        System.out.print(String.format("%4s", String.format("%-4s", "|4|")));
+                        if (czyStrzal){
+                            System.out.print(String.format("%4s", String.format("%-4s", "|Z|")));
+                        } else if(!ukryj) {
+                            System.out.print(String.format("%4s", String.format("%-4s", "|4|")));
+                        } else {
+                            System.out.print(String.format("%4s", String.format("%-4s", " _ ")));
+                        }
                     } else {
-                        System.out.print(String.format("%4s", String.format("%-4s", " _ ")));
+                        if (czyStrzal){
+                            System.out.print(String.format("%4s", String.format("%-4s", "|X|")));
+                        } else {
+                            System.out.print(String.format("%4s", String.format("%-4s", " _ ")));
+                        }
                     }
                 }
 

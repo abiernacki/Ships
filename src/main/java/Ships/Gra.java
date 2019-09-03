@@ -1,5 +1,8 @@
 package Ships;
 
+import java.sql.SQLOutput;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Gra {
@@ -20,26 +23,48 @@ public class Gra {
     private Czteromasztowiec[] statki4 = new Czteromasztowiec[1];
 
 
-    public void rozmiescStatki(Statki statki) {
+    public void rozmiescStatki(Plansza plansza) {
+        if (true)
+        return;
 
-        System.out.print("Podaj współrzędną X pierwszego jednomasztowca: ");
-        x1 = scanner.nextInt();
-        System.out.print("Podaj współrzędną Y pierwszego jednomasztowca: ");
-        y1 = scanner.nextInt();
-        System.out.println();
-        statki1[0] = new Jednomasztowiec(x1, y1);
-        statki.setStatki1(statki1);
-        statki.plansza();
-        System.out.println();
+        List<Punkt> lista = new ArrayList<>();
+        do {
+            System.out.print("Podaj współrzędną X pierwszego jednomasztowca: ");
+            x1 = scanner.nextInt();
+            System.out.print("Podaj współrzędną Y pierwszego jednomasztowca: ");
+            y1 = scanner.nextInt();
+            System.out.println();
 
-        System.out.print("Podaj współrzędną X drugiego jednomasztowca: ");
-        x1 = scanner.nextInt();
-        System.out.print("Podaj współrzędną Y drugiego jednomasztowca: ");
-        y1 = scanner.nextInt();
+            statki1[0] = new Jednomasztowiec(x1, y1);
+            if (statki1[0].validate(lista)) {
+                lista.add(new Punkt(x1, y1));
+                break;
+            } else {
+                System.out.println("Podaj poprawne dane!");
+            }
+        } while (true);
+
+
+        plansza.setStatki1(statki1);
+        plansza.plansza();
         System.out.println();
-        statki1[1] = new Jednomasztowiec(x1, y1);
-        statki.setStatki1(statki1);
-        statki.plansza();
+        do {
+            System.out.print("Podaj współrzędną X drugiego jednomasztowca: ");
+            x1 = scanner.nextInt();
+            System.out.print("Podaj współrzędną Y drugiego jednomasztowca: ");
+            y1 = scanner.nextInt();
+            System.out.println();
+            statki1[1] = new Jednomasztowiec(x1, y1);
+            if (statki1[1].validate(lista)) {
+                lista.add(new Punkt(x1, y1));
+                break;
+            } else {
+                System.out.println("Podaj poprawne dane!");
+            }
+        } while (true);
+
+        plansza.setStatki1(statki1);
+        plansza.plansza();
         System.out.println();
 
         System.out.print("Podaj współrzędną X trzeciego jednomasztowca: ");
@@ -47,9 +72,11 @@ public class Gra {
         System.out.print("Podaj współrzędną Y trzeciego jednomasztowca: ");
         y1 = scanner.nextInt();
         System.out.println();
+        lista.add(new Punkt(x1, y1));
         statki1[2] = new Jednomasztowiec(x1, y1);
-        statki.setStatki1(statki1);
-        statki.plansza();
+        statki1[2].validate(lista);
+        plansza.setStatki1(statki1);
+        plansza.plansza();
         System.out.println();
 
         System.out.print("Podaj współrzędną X czwartego jednomasztowca: ");
@@ -57,9 +84,11 @@ public class Gra {
         System.out.print("Podaj współrzędną Y czwartego jednomasztowca: ");
         y1 = scanner.nextInt();
         System.out.println();
+        lista.add(new Punkt(x1, y1));
         statki1[3] = new Jednomasztowiec(x1, y1);
-        statki.setStatki1(statki1);
-        statki.plansza();
+        statki1[3].validate(lista);
+        plansza.setStatki1(statki1);
+        plansza.plansza();
         System.out.println();
 
 
@@ -72,9 +101,12 @@ public class Gra {
         System.out.print("Podaj współrzędną Y2 pierwszego dwumasztowca: ");
         y2 = scanner.nextInt();
         System.out.println();
+        lista.add(new Punkt(x1, y1));
+        lista.add(new Punkt(x2, y2));
         statki2[0] = new Dwumasztowiec(x1, y1, x2, y2);
-        statki.setStatki2(statki2);
-        statki.plansza();
+        statki2[0].validate(lista);
+        plansza.setStatki2(statki2);
+        plansza.plansza();
         System.out.println();
 
         System.out.print("Podaj współrzędną X1 drugiego dwumasztowca: ");
@@ -86,9 +118,12 @@ public class Gra {
         System.out.print("Podaj współrzędną Y2 drugiego dwumasztowca: ");
         y2 = scanner.nextInt();
         System.out.println();
+        lista.add(new Punkt(x1, y1));
+        lista.add(new Punkt(x2, y2));
         statki2[1] = new Dwumasztowiec(x1, y1, x2, y2);
-        statki.setStatki2(statki2);
-        statki.plansza();
+        statki2[1].validate(lista);
+        plansza.setStatki2(statki2);
+        plansza.plansza();
         System.out.println();
 
         System.out.print("Podaj współrzędną X1 trzeciego dwumasztowca: ");
@@ -100,9 +135,12 @@ public class Gra {
         System.out.print("Podaj współrzędną Y3 trzeciego dwumasztowca: ");
         y2 = scanner.nextInt();
         System.out.println();
+        lista.add(new Punkt(x1, y1));
+        lista.add(new Punkt(x2, y2));
         statki2[2] = new Dwumasztowiec(x1, y1, x2, y2);
-        statki.setStatki2(statki2);
-        statki.plansza();
+        statki2[2].validate(lista);
+        plansza.setStatki2(statki2);
+        plansza.plansza();
         System.out.println();
 
         System.out.print("Podaj współrzędną X1 pierwszego trzymasztowca: ");
@@ -118,9 +156,13 @@ public class Gra {
         System.out.print("Podaj współrzędną Y3 pierwszego trzymasztowca: ");
         y3 = scanner.nextInt();
         System.out.println();
+        lista.add(new Punkt(x1, y1));
+        lista.add(new Punkt(x2, y2));
+        lista.add(new Punkt(x3, y3));
         statki3[0] = new Trzymasztowiec(x1, y1, x2, y2, x3, y3);
-        statki.setStatki3(statki3);
-        statki.plansza();
+        statki3[0].validate(lista);
+        plansza.setStatki3(statki3);
+        plansza.plansza();
         System.out.println();
 
         System.out.print("Podaj współrzędną X1 drugiego trzymasztowca: ");
@@ -136,9 +178,13 @@ public class Gra {
         System.out.print("Podaj współrzędną Y3 drugiego trzymasztowca: ");
         y3 = scanner.nextInt();
         System.out.println();
+        lista.add(new Punkt(x1, y1));
+        lista.add(new Punkt(x2, y2));
+        lista.add(new Punkt(x3, y3));
         statki3[1] = new Trzymasztowiec(x1, y1, x2, y2, x3, y3);
-        statki.setStatki3(statki3);
-        statki.plansza();
+        statki3[1].validate(lista);
+        plansza.setStatki3(statki3);
+        plansza.plansza();
         System.out.println();
 
         System.out.print("Podaj współrzędną X1 pierwszego czteromasztowca: ");
@@ -158,9 +204,38 @@ public class Gra {
         System.out.print("Podaj współrzędną Y3 pierwszego czteromasztowca: ");
         y4 = scanner.nextInt();
         System.out.println();
+        lista.add(new Punkt(x1, y1));
+        lista.add(new Punkt(x2, y2));
+        lista.add(new Punkt(x3, y3));
+        lista.add(new Punkt(x4, y4));
         statki4[0] = new Czteromasztowiec(x1, y1, x2, y2, x3, y3, x4, y4);
-        statki.setStatki4(statki4);
-        statki.plansza();
+        statki3[0].validate(lista);
+        plansza.setStatki4(statki4);
+        plansza.plansza();
         System.out.println();
     }
+
+    public void rozpocznijGre(Plansza planszaKomputera, Plansza planszaUzytkownika){
+
+        do {
+
+            System.out.println("Podaj pierwszą współrzędną strzału");
+            int x = scanner.nextInt();
+            System.out.println("Podaj drugą współrzędną strzału");
+            int y = scanner.nextInt();
+
+            if(!AbstractMasztowiec.check(x) && !AbstractMasztowiec.check(y)){
+
+                List<Punkt> strzaly = planszaKomputera.getStrzaly();
+                strzaly.add(new Punkt(x,y));
+                planszaKomputera.plansza(true);
+
+            } else {
+                System.out.println("Podane współrzędne są niepoprawne");
+            }
+
+        }while (true);
+    }
+
+
 }
