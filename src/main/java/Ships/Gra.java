@@ -22,11 +22,13 @@ public class Gra {
     private Czteromasztowiec[] statki4 = new Czteromasztowiec[1];
 
 
+
     public void rozmiescStatki(Plansza plansza) {
-//        if (true)
-//            return;
+        if (true)
+            return;
 
         List<Punkt> lista = new ArrayList<>();
+
         do {
             System.out.print("Podaj współrzędną X pierwszego jednomasztowca: ");
             x1 = scanner.nextInt();
@@ -64,9 +66,6 @@ public class Gra {
         System.out.println();
 
         do {
-            plansza.setStatki1(statki1);
-            plansza.plansza();
-            System.out.println();
 
             System.out.print("Podaj współrzędną X trzeciego jednomasztowca: ");
             x1 = scanner.nextInt();
@@ -99,7 +98,7 @@ public class Gra {
                 System.out.println("Podaj poprawne dane!");
             }
         } while (true);
-        plansza.setStatki1(statki1);
+        plansza.setStatki2(statki2);
         plansza.plansza();
         System.out.println();
 
@@ -122,7 +121,7 @@ public class Gra {
                 System.out.println("Podaj poprawne dane!");
             }
         } while (true);
-        plansza.setStatki1(statki1);
+        plansza.setStatki2(statki2);
         plansza.plansza();
         System.out.println();
 
@@ -145,7 +144,7 @@ public class Gra {
                 System.out.println("Podaj poprawne dane!");
             }
         } while (true);
-        plansza.setStatki1(statki1);
+        plansza.setStatki2(statki2);
         plansza.plansza();
         System.out.println();
 
@@ -168,7 +167,7 @@ public class Gra {
                 System.out.println("Podaj poprawne dane!");
             }
         } while (true);
-        plansza.setStatki1(statki1);
+        plansza.setStatki2(statki2);
         plansza.plansza();
         System.out.println();
 
@@ -196,7 +195,7 @@ public class Gra {
                 System.out.println("Podaj poprawne dane!");
             }
         } while (true);
-        plansza.setStatki1(statki1);
+        plansza.setStatki3(statki3);
         plansza.plansza();
         System.out.println();
 
@@ -214,9 +213,6 @@ public class Gra {
             System.out.print("Podaj współrzędną Y3 drugiego trzymasztowca: ");
             y3 = scanner.nextInt();
             System.out.println();
-            lista.add(new Punkt(x1, y1));
-            lista.add(new Punkt(x2, y2));
-            lista.add(new Punkt(x3, y3));
             statki3[1] = new Trzymasztowiec(x1, y1, x2, y2, x3, y3);
             if (statki3[1].validate(lista)) {
                 lista.add(new Punkt(x1, y1));
@@ -227,7 +223,7 @@ public class Gra {
                 System.out.println("Podaj poprawne dane!");
             }
         } while (true);
-        plansza.setStatki1(statki1);
+        plansza.setStatki3(statki3);
         plansza.plansza();
         System.out.println();
 
@@ -249,10 +245,6 @@ public class Gra {
             System.out.print("Podaj współrzędną Y3 pierwszego czteromasztowca: ");
             y4 = scanner.nextInt();
             System.out.println();
-            lista.add(new Punkt(x1, y1));
-            lista.add(new Punkt(x2, y2));
-            lista.add(new Punkt(x3, y3));
-            lista.add(new Punkt(x4, y4));
             statki4[0] = new Czteromasztowiec(x1, y1, x2, y2, x3, y3, x4, y4);
             if (statki4[0].validate(lista)) {
                 lista.add(new Punkt(x1, y1));
@@ -264,7 +256,7 @@ public class Gra {
                 System.out.println("Podaj poprawne dane!");
             }
         } while (true);
-        plansza.setStatki1(statki1);
+        plansza.setStatki4(statki4);
         plansza.plansza();
         System.out.println();
     }
@@ -273,10 +265,10 @@ public class Gra {
 
         do {
 
-            System.out.println("Podaj pierwszą współrzędną strzału");
-            int x = scanner.nextInt();
-            System.out.println("Podaj drugą współrzędną strzału");
+            System.out.print("Podaj pierwszą współrzędną strzału");
             int y = scanner.nextInt();
+            System.out.print("Podaj drugą współrzędną strzału");
+            int x = scanner.nextInt();
 
             if (!AbstractMasztowiec.check(x) && !AbstractMasztowiec.check(y)) {
 
@@ -290,6 +282,4 @@ public class Gra {
 
         } while (true);
     }
-
-
 }
